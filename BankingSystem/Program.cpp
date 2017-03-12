@@ -1,19 +1,32 @@
 // BankingSystem.cpp: определяет точку входа для консольного приложения.
 //
 
-
-
 #include "stdafx.h"
-#include <cstdlib>
+#include <iostream>
 
 using namespace UI;
+using namespace BankingSystem;
 
 int main()
 {
-	UIController ui;
-	ui.startUI();
+	setlocale(LC_CTYPE, "Russian");
+	char* menu = "\n1. Вывести список банков \n0. Выход";
 
-	printf("\n");
-	system("pause");
+	BankingController bankingController;
+	while (true)
+	{
+		cout << menu;
+		cout << "\nВведите команду : ";
+		int command = getCommand();
+		if (command == 0)
+		{
+			break;
+		}
+		else
+		{
+			bankingController.showBanksList();
+		}
+	}
+	
 	return 0;
 }

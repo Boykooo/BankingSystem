@@ -1,3 +1,8 @@
-﻿  UIController.cpp
+﻿  stdafx.cpp
+  UI.cpp
+  Program.cpp
+  BankingController.cpp
+  Bank.cpp
+  Создание кода...
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.exe
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.pdb (Full PDB)

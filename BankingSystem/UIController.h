@@ -1,4 +1,5 @@
 #pragma once
+using namespace BankingSystem;
 
 namespace UI {
 
@@ -9,7 +10,9 @@ namespace UI {
 		~UIController();
 		void startUI();
 	private:
-		void run();
+		char* menu;
+		int getCommand();
+		BankingController bankingController;
 	};
 }
 

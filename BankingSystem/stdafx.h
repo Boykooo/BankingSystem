@@ -10,7 +10,9 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "BankingController.h"
-#include "UIController.h"
+#include "UI.h"
+#include "Bank.h"
+
 
 
 

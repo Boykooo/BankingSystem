@@ -19,6 +19,12 @@
     <Filter Include="Файлы исходного кода\Controllers">
       <UniqueIdentifier>{8366f54c-7319-4a0b-aba4-8e90b5cef46f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\BankingComponents">
+      <UniqueIdentifier>{087de0f5-e24e-4011-8037-b4e908d955bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\BankingComponents">
+      <UniqueIdentifier>{5c610dde-cc78-4c99-9b52-5c71c086dd61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -33,8 +39,14 @@
     <ClInclude Include="BankingController.h">
       <Filter>Заголовочные файлы\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="UIController.h">
-      <Filter>Заголовочные файлы\Controllers</Filter>
+    <ClInclude Include="Bank.h">
+      <Filter>Заголовочные файлы\BankingComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Заголовочные файлы\BankingComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,10 +56,13 @@
     <ClCompile Include="Program.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="UIController.cpp">
+    <ClCompile Include="BankingController.cpp">
       <Filter>Файлы исходного кода\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="BankingController.cpp">
+    <ClCompile Include="Bank.cpp">
+      <Filter>Файлы исходного кода\BankingComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
       <Filter>Файлы исходного кода\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
