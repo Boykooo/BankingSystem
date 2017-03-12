@@ -17,13 +17,12 @@ UIController::~UIController()
 
 }
 
-void UI::UIController::startUI()
+void UIController::startUI()
 {
 	cout << "Start UI";
 }
 
 void UIController::run()
 {
-
 
 }
