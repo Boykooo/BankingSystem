@@ -19,6 +19,9 @@ namespace BankingSystem {
 		void openMenu();
 		void chooseBank();
 		void newBank();
+		void deleteBank();
+
+		int getBankIndex();
 	};
 }
 																												   

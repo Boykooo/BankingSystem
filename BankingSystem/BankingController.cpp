@@ -24,10 +24,10 @@ void BankingSystem::BankingController::initBanks()
 	Bank *vtb = new Bank("ВТБ", 8952100000101, 15);
 	Bank *gaz = new Bank("Газпромбанк", 4200094214000, 34);
 										
-	Client *trast = new LegalPerson("Траст", "123456789325", "ООО");
+	Client *trust = new LegalPerson("Траст", "123456789325", "ООО");
 	Client *privatePerson = new PrivatePerson("Петр", "Астахов", "Анатольевич", "21.06.1962", "1985 186725");
 
-	sber->addUser(trast);
+	sber->addUser(trust);
 	sber->addUser(privatePerson);
 
 	banksList->push_back(sber);
@@ -62,6 +62,9 @@ void BankingSystem::BankingController::openMenu()
 	case 2:
 		BankingController::newBank();
 		break;
+	case 3:
+		BankingController::deleteBank();
+		break;
 	default:
 		break;
 	}
@@ -69,17 +72,13 @@ void BankingSystem::BankingController::openMenu()
 
 void BankingController::chooseBank()
 {
-	cout << "Введите индекс банка : ";
-	int bankNumber = UI::getInt() - 1;
+	int bankNumber = getBankIndex();
 
-	if (bankNumber >= 0 && banksList->size() > bankNumber)
+	if (bankNumber >= 0)
 	{
 		(*banksList)[bankNumber]->showInfo();
 	}
-	else
-	{
-		cout << "Банк с таким индексом не существует";
-	}
+	
 }
 
 void BankingController::newBank()
@@ -97,3 +96,32 @@ void BankingController::newBank()
 	banksList->push_back(bank);
 
 }
+
+void BankingController::deleteBank()
+{
+	int bankNumber = getBankIndex();
+
+	if (bankNumber >= 0)
+	{
+		delete (*banksList)[bankNumber];
+		banksList->erase(banksList->begin() + bankNumber);
+	}
+}
+
+int BankingController::getBankIndex()
+{
+	cout << "Введите индекс банка : ";
+	int bankNumber = UI::getInt() - 1;
+
+	if (bankNumber >= 0 && banksList->size() > bankNumber)
+	{
+		return bankNumber;
+	}
+	else
+	{
+		cout << "Банк с таким индексом не существует";
+		return -1;
+	}
+}
+
+
