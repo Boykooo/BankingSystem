@@ -1,8 +1,10 @@
 #pragma once
 
-#include <vector>
 #include "Bank.h"
+#include <vector>
+
 using namespace std;
+using namespace BankingComponents;
 
 namespace BankingSystem {
 	class BankingController
@@ -10,13 +12,13 @@ namespace BankingSystem {
 	public:
 		BankingController();
 		~BankingController();
-		char* getMenu();
 		void showBanksList();
 	private:
-		char* menu;
-		vector<Bank> banksList;
+		vector<Bank*> *banksList;
+		void initBanks();
 		void openMenu();
 		void chooseBank();
+		void newBank();
 	};
 }
 																												   

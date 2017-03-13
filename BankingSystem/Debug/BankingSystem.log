@@ -1,7 +1,10 @@
 ﻿  stdafx.cpp
   UI.cpp
   Program.cpp
+  Client.cpp
   BankingController.cpp
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(35): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(68): warning C4018: <: несоответствие типов со знаком и без знака
   Bank.cpp
   Создание кода...
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.exe

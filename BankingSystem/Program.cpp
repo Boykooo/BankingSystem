@@ -17,7 +17,7 @@ int main()
 	{
 		cout << menu;
 		cout << "\n¬ведите команду : ";
-		int command = getCommand();
+		int command = getInt();
 		if (command == 0)
 		{
 			break;

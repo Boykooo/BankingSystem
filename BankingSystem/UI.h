@@ -1,5 +1,6 @@
 #pragma once
 
 namespace UI {
-	int getCommand();
+	int getInt();
+	double getDouble();
 }

@@ -9,50 +9,65 @@ using namespace BankingSystem;
 
 BankingController::BankingController()
 {
-	menu = "\n1. Выбрать банк. \n2.Добавить новый банк. ";
+	banksList = new vector<Bank*>();
+	initBanks();
 }
 
 BankingController::~BankingController()
 {
+
 }
 
-char * BankingController::getMenu()
+void BankingSystem::BankingController::initBanks()
 {
-	return menu;
+	Bank *sber = new Bank("Сбербанк", 7520000023900, 8);
+	Bank *vtb = new Bank("ВТБ", 8952100000101, 15);
+	Bank *gaz = new Bank("Газпромбанк", 4200094214000, 11);
+
+
+	banksList->push_back(sber);
+	banksList->push_back(vtb);
+	banksList->push_back(gaz);
 }
 
 void BankingController::showBanksList()
 {
-	for (int i = 0; i < banksList.size(); i++)
+	for (int i = 0; i < banksList->size(); i++)
 	{
-		cout << "\n" << i << ". " << banksList[i].getName();
+		cout << "\n" << i + 1 << ". " << (*banksList)[i]->getName();
 	}
 
+	cout << "\n";
 	BankingController::openMenu();
 }
 
+
+
 void BankingSystem::BankingController::openMenu()
 {
-	cout << menu;
-	switch (UI::getCommand())
+	cout << "\n1. Выбрать банк \n2. Добавить банк \n3. Удалить банк \n0. Выход\n";
+	switch (UI::getInt())
 	{
-		case 1:
-			BankingController::chooseBank();
-			break;
-		case 2:
-			break;
-		default:
-			break;
+	case 0:
+		break;
+	case 1:
+		BankingController::chooseBank();
+		break;
+	case 2:
+		BankingController::newBank();
+		break;
+	default:
+		break;
 	}
 }
 
 void BankingController::chooseBank()
 {
-	int bankNumber = UI::getCommand();
+	int bankNumber = UI::getInt();
 
-	if (bankNumber >= 0 && banksList.size() < bankNumber)
+	if (bankNumber >= 0 && banksList->size() < bankNumber)
 	{
-		banksList[bankNumber].showInfo();
+		(*banksList)[bankNumber]->showInfo();
 	}
 	else
 	{
@@ -60,4 +75,18 @@ void BankingController::chooseBank()
 	}
 }
 
+void BankingController::newBank()
+{
+	cout << "Введите имя банка\n";
+	string bankName;
+	getline(cin >> ws, bankName);
+	cout << "Введите начальный счет банка\n";
+	double account = UI::getDouble();
+	cout << "Введите процентную ставку банка\n";
+	double persent = UI::getDouble();
 
+	Bank *bank = new Bank(bankName, account, persent);
+
+	banksList->push_back(bank);
+
+}

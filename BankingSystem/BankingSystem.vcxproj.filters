@@ -42,11 +42,11 @@
     <ClInclude Include="Bank.h">
       <Filter>Заголовочные файлы\BankingComponents</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Заголовочные файлы\BankingComponents</Filter>
-    </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Заголовочные файлы\BankingComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>Файлы исходного кода\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Файлы исходного кода\BankingComponents</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

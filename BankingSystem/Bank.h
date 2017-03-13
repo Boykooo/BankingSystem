@@ -1,14 +1,25 @@
 #pragma once
 
-namespace BankingSystem {
+#include "Client.h"
+#include <vector>
+
+using namespace std;
+
+namespace BankingComponents {
 	class Bank
 	{
+		string bankName;
+		double account;
+		double persent;
+		vector<Client> clientsList;
 	public:
-		Bank();
+		Bank(string bankName, double account, double persent);
 		~Bank();
 		void showInfo();
-		char* getName();
-	private:
-		char* bankName;
+		string getName();
+		double getAccount();
+		double getPersent();
+		void setName(string newName);
+		void addUser(Client newClient);
 	};
 }
