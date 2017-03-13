@@ -12,7 +12,8 @@ int main()
 	setlocale(LC_CTYPE, "Russian");
 	char* menu = "\n1. Вывести список банков \n0. Выход";
 
-	BankingController bankingController;
+	BankingController *bankingController = new BankingController();
+
 	while (true)
 	{
 		cout << menu;
@@ -24,9 +25,11 @@ int main()
 		}
 		else
 		{
-			bankingController.showBanksList();
+			bankingController->showBanksList();
 		}
 	}
 	
+	delete bankingController;
+
 	return 0;
 }

@@ -25,6 +25,12 @@
     <Filter Include="Файлы исходного кода\BankingComponents">
       <UniqueIdentifier>{5c610dde-cc78-4c99-9b52-5c71c086dd61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\BankingComponents\Persons">
+      <UniqueIdentifier>{6d3ae429-fb14-4f45-a753-02d524471631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\BankingComponents\Persons">
+      <UniqueIdentifier>{a685e3fb-36fb-44ef-bcb1-8a31beca08d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -48,6 +54,12 @@
     <ClInclude Include="Client.h">
       <Filter>Заголовочные файлы\BankingComponents</Filter>
     </ClInclude>
+    <ClInclude Include="LegalPerson.h">
+      <Filter>Заголовочные файлы\BankingComponents\Persons</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivatePerson.h">
+      <Filter>Заголовочные файлы\BankingComponents\Persons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -67,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>Файлы исходного кода\BankingComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="LegalPerson.cpp">
+      <Filter>Файлы исходного кода\BankingComponents\Persons</Filter>
+    </ClCompile>
+    <ClCompile Include="PrivatePerson.cpp">
+      <Filter>Файлы исходного кода\BankingComponents\Persons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -16,6 +16,8 @@
 #include "Bank.h"
 #include "Client.h"
 #include <string>
+#include "LegalPerson.h"
+#include "PrivatePerson.h"
 
 
 

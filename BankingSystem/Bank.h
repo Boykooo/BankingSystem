@@ -11,7 +11,7 @@ namespace BankingComponents {
 		string bankName;
 		double account;
 		double persent;
-		vector<Client> clientsList;
+		vector<Client*> *clientsList;
 	public:
 		Bank(string bankName, double account, double persent);
 		~Bank();
@@ -20,6 +20,8 @@ namespace BankingComponents {
 		double getAccount();
 		double getPersent();
 		void setName(string newName);
-		void addUser(Client newClient);
+		void addUser(Client *newClient);
+
+		void openMenu();
 	};
 }

@@ -10,17 +10,10 @@ Client::~Client()
 {
 }
 
-#pragma region GettersAndSetters
-
-void Client::setName(char * newName)
+string Client::getName()
 {
-	userName = newName;
+	return string();
 }
 
-char* Client::getName()
-{
-	return userName;
-}
 
-#pragma endregion
 									

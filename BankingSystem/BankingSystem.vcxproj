@@ -147,6 +147,8 @@
   <ItemGroup>
     <ClInclude Include="Bank.h" />
     <ClInclude Include="BankingController.h" />
+    <ClInclude Include="LegalPerson.h" />
+    <ClInclude Include="PrivatePerson.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UI.h" />
@@ -155,6 +157,8 @@
   <ItemGroup>
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankingController.cpp" />
+    <ClCompile Include="LegalPerson.cpp" />
+    <ClCompile Include="PrivatePerson.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

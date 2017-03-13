@@ -20,10 +20,15 @@ BankingController::~BankingController()
 
 void BankingSystem::BankingController::initBanks()
 {
-	Bank *sber = new Bank("Сбербанк", 7520000023900, 8);
+	Bank *sber = new Bank("Сбербанк", 7520000023900.0, 8);
 	Bank *vtb = new Bank("ВТБ", 8952100000101, 15);
-	Bank *gaz = new Bank("Газпромбанк", 4200094214000, 11);
+	Bank *gaz = new Bank("Газпромбанк", 4200094214000, 34);
+										
+	Client *trast = new LegalPerson("Траст", "123456789325", "ООО");
+	Client *privatePerson = new PrivatePerson("Петр", "Астахов", "Анатольевич", "21.06.1962", "1985 186725");
 
+	sber->addUser(trast);
+	sber->addUser(privatePerson);
 
 	banksList->push_back(sber);
 	banksList->push_back(vtb);
@@ -32,6 +37,7 @@ void BankingSystem::BankingController::initBanks()
 
 void BankingController::showBanksList()
 {
+	cout << "\nСписок банков : ";
 	for (int i = 0; i < banksList->size(); i++)
 	{
 		cout << "\n" << i + 1 << ". " << (*banksList)[i]->getName();
@@ -41,11 +47,11 @@ void BankingController::showBanksList()
 	BankingController::openMenu();
 }
 
-
-
 void BankingSystem::BankingController::openMenu()
 {
-	cout << "\n1. Выбрать банк \n2. Добавить банк \n3. Удалить банк \n0. Выход\n";
+	cout << "\nДоступные действия :"
+		<< "\n1. Выбрать банк \n2. Добавить банк \n3. Удалить банк \n0. Выход\n"
+		<< "Введите команду : ";
 	switch (UI::getInt())
 	{
 	case 0:
@@ -63,9 +69,10 @@ void BankingSystem::BankingController::openMenu()
 
 void BankingController::chooseBank()
 {
-	int bankNumber = UI::getInt();
+	cout << "Введите индекс банка : ";
+	int bankNumber = UI::getInt() - 1;
 
-	if (bankNumber >= 0 && banksList->size() < bankNumber)
+	if (bankNumber >= 0 && banksList->size() > bankNumber)
 	{
 		(*banksList)[bankNumber]->showInfo();
 	}
