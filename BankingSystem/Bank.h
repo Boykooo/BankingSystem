@@ -23,5 +23,8 @@ namespace BankingComponents {
 		void addUser(Client *newClient);
 
 		void openMenu();
+		void newClient();
+		void deleteClient();
+		int getClientIndex();
 	};
 }

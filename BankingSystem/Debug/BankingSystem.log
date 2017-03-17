@@ -1,6 +1,15 @@
-﻿  BankingController.cpp
+﻿  stdafx.cpp
+  UI.cpp
+  Program.cpp
+  PrivatePerson.cpp
+  LegalPerson.cpp
+  Client.cpp
+  BankingController.cpp
 c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(41): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(78): warning C4018: >: несоответствие типов со знаком и без знака
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(120): warning C4018: >: несоответствие типов со знаком и без знака
-  BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.exe
-  BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.pdb (Full PDB)
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(116): warning C4018: >: несоответствие типов со знаком и без знака
+  Bank.cpp
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(32): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(121): error C2065: banksList: необъявленный идентификатор
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(121): error C2227: выражение слева от "->size" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+  c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(121): note: тип: unknown-type
+  Создание кода...
