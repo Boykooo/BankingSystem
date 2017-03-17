@@ -12,9 +12,6 @@ LegalPerson::LegalPerson(string name, string iin, string type)
 
 LegalPerson::~LegalPerson()
 {
-	delete &name;
-	delete &iin;
-	delete &type;
 }
 
 string LegalPerson::getName()

@@ -38,7 +38,7 @@ void Bank::showInfo()
 	openMenu();
 }
 
-void BankingComponents::Bank::openMenu()
+void Bank::openMenu()
 {
 	cout << "\n1. Добавить нового клиента \n2. Удалить клиента \n0. Выход\n"
 		<< "Введите команду : ";
@@ -122,11 +122,9 @@ int Bank::getClientIndex()
 	{
 		return clientNumber;
 	}
-	else
-	{
-		cout << "Клиента с таким индексом не существует";
-		return -1;
-	}
+
+	cout << "Клиента с таким индексом не существует";
+	return -1;
 }
 
 
@@ -134,9 +132,6 @@ void Bank::addUser(Client *newUser)
 {
 	clientsList->push_back(newUser);
 }
-
-
-
 
 #pragma region GettersAndSetters
 

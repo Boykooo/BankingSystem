@@ -14,11 +14,6 @@ PrivatePerson::PrivatePerson(string name, string surname, string lastName,
 
 PrivatePerson::~PrivatePerson()
 {
-	delete &name;
-	delete &surname;
-	delete &lastName;
-	delete &passport_id;
-	delete &birthDate;
 }
 
 string PrivatePerson::getName()
