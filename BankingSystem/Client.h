@@ -20,6 +20,8 @@ namespace BankingComponents {
 		void replenishAccount(int accountIndex, double money);
 		void addNewAccount(Account *account);
 		std::vector<Account*>* getAccounts();
+		void addMoney(int accIndex, double money);
+		void takeMoney(int accIndex, double money);
 	};
 }
 

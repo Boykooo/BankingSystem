@@ -48,5 +48,15 @@ std::vector<Account*>* Client::getAccounts()
 	return accounts;
 }
 
+void Client::addMoney(int accIndex, double money)
+{
+	(*accounts)[accIndex]->addMoney(money);
+}
+
+void Client::takeMoney(int accIndex, double money)
+{
+	(*accounts)[accIndex]->takeMoney(money);
+}
+
 
 									

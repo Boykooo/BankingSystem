@@ -23,13 +23,15 @@ namespace BankingComponents {
 		void newClient();
 		void deleteClient();
 		int getClientIndex();
+		int getClientAccountIndex();
 		void replenishAccount(Client *client);
-		void transferMoney();
+		void transferMoney(Client *client);
+		double addMoneyToBank(double money);
 		void addNewAccount(Client *client);
 	    void outputFullClientInfo(Client *client);
 
 		std::string bankName;
-		double account;
+		double bankAccount;
 		double persent;
 		std::vector<Client*> *clientsList;
 		int accountLength;

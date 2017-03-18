@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <cinttypes>
 
 
 using namespace BankingComponents;
@@ -9,7 +10,7 @@ using namespace BankingComponents;
 Bank::Bank(string bankName, double account, double persent)
 {
 	this->bankName = bankName;
-	this->account = account;
+	this->bankAccount = account;
 	this->persent = persent;
 
 	this->accountLength = 20;
@@ -25,7 +26,7 @@ Bank::~Bank()
 void Bank::showInfo()
 {
 	cout << "\nИмя банка : " << bankName << "\n";
-	cout << fixed << "Счет банка : " << account << "\n";
+	cout << fixed << "Счет банка : " << bankAccount << "\n";
 	cout << "Процентная ставка : " << persent << "%\n";
 	cout << "Количество клиентов : " << clientsList->size() << "\n";
 
@@ -87,7 +88,7 @@ void Bank::chooseClient()
 				Bank::replenishAccount((*clientsList)[clientIndex]);
 				break;
 			case 2:
-				Bank::transferMoney();
+				Bank::transferMoney((*clientsList)[clientIndex]);
 				break;
 			case 3:
 				Bank::addNewAccount((*clientsList)[clientIndex]);
@@ -165,7 +166,20 @@ int Bank::getClientIndex()
 		return clientNumber;
 	}
 
-	cout << "Клиента с таким индексом не существует";
+	cout << "Клиента с таким индексом не существует\n";
+	return -1;
+}
+
+int Bank::getClientAccountIndex()
+{
+	int accIndex = UI::getInt() - 1;
+
+	if (accIndex >= 0 && clientsList->size() > accIndex)
+	{
+		return accIndex;
+	}
+
+	cout << "Банковского счета с таким индексом не существует\n";
 	return -1;
 }
 
@@ -185,9 +199,38 @@ void Bank::replenishAccount(Client *client)
 	}
 }
 
-void Bank::transferMoney()
+void Bank::transferMoney(Client *client)
 {
+	cout << "Введите индекс счета, откуда будут переведены средства";
+	int accOutIndex = getClientAccountIndex();
+	if (accOutIndex >= 0)
+	{
+		cout << "Введите индекс счета, куда будут переведены средства";
+		int accInIndex = getClientAccountIndex();
+		if (accInIndex >= 0)
+		{
+			cout << "Введите сумму перевода";
+			double money = UI::getDouble();
+			if (money > 0 && client->canTransfer(accOutIndex, money))
+			{
+				client->takeMoney(accOutIndex, money);
+				double persentMoney = money - addMoneyToBank(money);
+				client->addMoney(accInIndex, persentMoney);
+			}
+			else
+			{
+				cout << "У клиента недостаточно средств на счете";
+			}
+		}
+	}
 
+}
+
+double Bank::addMoneyToBank(double money)
+{
+	double persentMoney = money * persent / 100;
+	bankAccount += persentMoney;
+	return persentMoney;
 }
 
 void Bank::addNewAccount(Client *client)
@@ -237,7 +280,7 @@ string Bank::getName()
 
 double Bank::getAccount()
 {
-	return account;
+	return bankAccount;
 }
 
 double Bank::getPersent()

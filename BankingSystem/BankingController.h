@@ -16,7 +16,6 @@ namespace BankingSystem {
 	private:
 		vector<Bank*> *banksList;
 		void initBanks();
-		void openMenu();
 		void chooseBank();
 		void newBank();
 		void deleteBank();
