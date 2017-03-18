@@ -14,6 +14,7 @@
 #include "BankingController.h"
 #include "UI.h"
 #include "Bank.h"
+#include "Account.h"
 #include "Client.h"
 #include <string>
 #include "LegalPerson.h"

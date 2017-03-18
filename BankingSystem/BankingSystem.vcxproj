@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="BankingController.h" />
     <ClInclude Include="LegalPerson.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Client.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankingController.cpp" />
     <ClCompile Include="LegalPerson.cpp" />

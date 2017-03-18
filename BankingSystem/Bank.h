@@ -3,28 +3,35 @@
 #include "Client.h"
 #include <vector>
 
-using namespace std;
 
 namespace BankingComponents {
 	class Bank
 	{
-		string bankName;
-		double account;
-		double persent;
-		vector<Client*> *clientsList;
 	public:
-		Bank(string bankName, double account, double persent);
+		Bank(std::string bankName, double account, double persent);
 		~Bank();
 		void showInfo();
-		string getName();
+		std::string getName();
 		double getAccount();
 		double getPersent();
-		void setName(string newName);
+		void setName(std::string newName);
 		void addUser(Client *newClient);
 
+	private:
 		void openMenu();
+		void chooseClient();
 		void newClient();
 		void deleteClient();
 		int getClientIndex();
+		void replenishAccount(Client *client);
+		void transferMoney();
+		void addNewAccount(Client *client);
+	    void outputFullClientInfo(Client *client);
+
+		std::string bankName;
+		double account;
+		double persent;
+		std::vector<Client*> *clientsList;
+		int accountLength;
 	};
 }

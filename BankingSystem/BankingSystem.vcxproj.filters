@@ -60,6 +60,9 @@
     <ClInclude Include="PrivatePerson.h">
       <Filter>Заголовочные файлы\BankingComponents\Persons</Filter>
     </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Заголовочные файлы\BankingComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="PrivatePerson.cpp">
       <Filter>Файлы исходного кода\BankingComponents\Persons</Filter>
+    </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Файлы исходного кода\BankingComponents</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
