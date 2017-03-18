@@ -201,15 +201,15 @@ void Bank::replenishAccount(Client *client)
 
 void Bank::transferMoney(Client *client)
 {
-	cout << "¬ведите индекс счета, откуда будут переведены средства";
+	cout << "¬ведите индекс счета, откуда будут переведены средства : ";
 	int accOutIndex = getClientAccountIndex();
 	if (accOutIndex >= 0)
 	{
-		cout << "¬ведите индекс счета, куда будут переведены средства";
+		cout << "¬ведите индекс счета, куда будут переведены средства : ";
 		int accInIndex = getClientAccountIndex();
 		if (accInIndex >= 0)
 		{
-			cout << "¬ведите сумму перевода";
+			cout << "¬ведите сумму перевода : ";
 			double money = UI::getDouble();
 			if (money > 0 && client->canTransfer(accOutIndex, money))
 			{
@@ -247,7 +247,7 @@ void Bank::addNewAccount(Client *client)
 void Bank::outputFullClientInfo(Client* client)
 {
 	cout << "\n" << client->getName();
-
+						
 	if (client->accountCount() > 0)
 	{
 		cout << "\n—чета : \n";
@@ -255,7 +255,7 @@ void Bank::outputFullClientInfo(Client* client)
 		for (int i = 0; i < accounts->size(); i++)
 		{
 			cout << i + 1 << ". Ќомер счета : " << (*accounts)[i]->getNumberAccount()
-				<< "\n ќстаток средств : " << (*accounts)[i]->getMoney() << "\n";
+				<< "\n ќстаток средств : " << fixed << (*accounts)[i]->getMoney() << "\n";
 		}
 	}
 	else
