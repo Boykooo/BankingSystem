@@ -27,7 +27,6 @@ void BankingSystem::BankingController::initBanks()
 	Client *trust = new LegalPerson("Траст", "123456789325", "ООО");
 	Client *privatePerson = new PrivatePerson("Петр", "Астахов", "Анатольевич", "21.06.1962", "1985 186725");
 
-
 	sber->addUser(trust);
 	sber->addUser(privatePerson);
 

@@ -170,11 +170,11 @@ int Bank::getClientIndex()
 	return -1;
 }
 
-int Bank::getClientAccountIndex()
+int Bank::getClientAccountIndex(Client *client)
 {
 	int accIndex = UI::getInt() - 1;
 
-	if (accIndex >= 0 && clientsList->size() > accIndex)
+	if (accIndex >= 0 && client->accountCount() > accIndex)
 	{
 		return accIndex;
 	}
@@ -202,24 +202,30 @@ void Bank::replenishAccount(Client *client)
 void Bank::transferMoney(Client *client)
 {
 	cout << "Введите индекс счета, откуда будут переведены средства : ";
-	int accOutIndex = getClientAccountIndex();
+	int accOutIndex = getClientAccountIndex(client);
 	if (accOutIndex >= 0)
 	{
-		cout << "Введите индекс счета, куда будут переведены средства : ";
-		int accInIndex = getClientAccountIndex();
-		if (accInIndex >= 0)
+		cout << "Введите индекс клиента, на счет которого будут переведены средства : ";
+		int clientIndex = getClientIndex();
+		if (clientIndex != -1)
 		{
-			cout << "Введите сумму перевода : ";
-			double money = UI::getDouble();
-			if (money > 0 && client->canTransfer(accOutIndex, money))
+			Client *inClient = (*clientsList)[clientIndex];
+			cout << "Введите индекс счета, куда будут переведены средства : ";
+			int accInIndex = getClientAccountIndex(inClient);
+			if (accInIndex >= 0)
 			{
-				client->takeMoney(accOutIndex, money);
-				double persentMoney = money - addMoneyToBank(money);
-				client->addMoney(accInIndex, persentMoney);
-			}
-			else
-			{
-				cout << "У клиента недостаточно средств на счете";
+				cout << "Введите сумму перевода : ";
+				double money = UI::getDouble();
+				if (money > 0 && client->canTransfer(accOutIndex, money))
+				{
+					client->takeMoney(accOutIndex, money);
+					double persentMoney = money - addMoneyToBank(money);
+					inClient->addMoney(accInIndex, persentMoney);
+				}
+				else
+				{
+					cout << "У клиента недостаточно средств на счете";
+				}
 			}
 		}
 	}
@@ -247,7 +253,7 @@ void Bank::addNewAccount(Client *client)
 void Bank::outputFullClientInfo(Client* client)
 {
 	cout << "\n" << client->getName();
-						
+
 	if (client->accountCount() > 0)
 	{
 		cout << "\nСчета : \n";

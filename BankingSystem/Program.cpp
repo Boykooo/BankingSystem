@@ -3,13 +3,17 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <Windows.h>
 
 using namespace UI;
 using namespace BankingSystem;
 
 int main()
 {
-	setlocale(LC_CTYPE, "Russian");
+	//setlocale(LC_CTYPE, "Russian");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
 	char* menu = "\n1. Вывести список банков \n0. Выход";
 
 	BankingController *bankingController = new BankingController();

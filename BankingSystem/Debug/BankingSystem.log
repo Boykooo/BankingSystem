@@ -1,7 +1,5 @@
-﻿  Bank.cpp
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(36): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(164): warning C4018: >: несоответствие типов со знаком и без знака
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(177): warning C4018: >: несоответствие типов со знаком и без знака
-c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(255): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  BankingController.cpp
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(44): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(119): warning C4018: >: несоответствие типов со знаком и без знака
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.exe
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.pdb (Full PDB)

@@ -23,7 +23,7 @@ namespace BankingComponents {
 		void newClient();
 		void deleteClient();
 		int getClientIndex();
-		int getClientAccountIndex();
+		int getClientAccountIndex(Client *client);
 		void replenishAccount(Client *client);
 		void transferMoney(Client *client);
 		double addMoneyToBank(double money);
