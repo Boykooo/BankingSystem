@@ -56,6 +56,3 @@ void Client::takeMoney(int accIndex, double money)
 {
 	accounts[accIndex]->takeMoney(money);
 }
-
-
-

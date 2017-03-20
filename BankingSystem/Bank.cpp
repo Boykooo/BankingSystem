@@ -1,11 +1,8 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include <cinttypes>
-
 
 using namespace BankingComponents;
-
 
 Bank::Bank(string bankName, double account, double persent)
 {
@@ -267,11 +264,7 @@ void Bank::addClient(Client *newClient)
 	clientsList.push_back(newClient);
 }
 
-#pragma region GettersAndSetters
-
 string Bank::getName()
 {
 	return bankName;
 }
-
-#pragma endregion

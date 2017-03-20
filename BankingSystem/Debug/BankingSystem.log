@@ -1,3 +1,17 @@
-﻿  Program.cpp
+﻿  stdafx.cpp
+  UI.cpp
+  Program.cpp
+  PrivatePerson.cpp
+  LegalPerson.cpp
+  Client.cpp
+  BankingController.cpp
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(49): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bankingcontroller.cpp(193): warning C4018: >: несоответствие типов со знаком и без знака
+  Bank.cpp
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(38): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(166): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\andrey\source\repos\bankingsystem\bankingsystem\bank.cpp(247): warning C4018: <: несоответствие типов со знаком и без знака
+  Account.cpp
+  Создание кода...
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.exe
   BankingSystem.vcxproj -> C:\Users\Andrey\Source\Repos\BankingSystem\Debug\BankingSystem.pdb (Full PDB)

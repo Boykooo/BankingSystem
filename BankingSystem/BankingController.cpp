@@ -22,7 +22,7 @@ BankingController::~BankingController()
 	}
 }
 
-void BankingSystem::BankingController::initBanks()
+void BankingController::initBanks()
 {
 	Bank *sber = new Bank("Сбербанк", 7520000023900.0, 8);
 	Bank *vtb = new Bank("ВТБ", 8952100000101, 15);
