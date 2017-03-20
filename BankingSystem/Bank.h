@@ -12,28 +12,28 @@ namespace BankingComponents {
 		~Bank();
 		void showInfo();
 		std::string getName();
-		double getAccount();
-		double getPersent();
-		void setName(std::string newName);
-		void addUser(Client *newClient);
+		void addClient(Client *newClient);
+		int getClientAccountIndex(int clientIndex);
+		int getClientIndex();
+		bool canTrasfer(int clientIndex, int accNumber, double money);
+		double takeMoney(int clientIndex, int accNumber, double money);
+		void giveMoney(int clientIndex, int accNumber, double money);
+		void showFullClientInfo(int clientIndex);
+		void openMenu();
+
 
 	private:
-		void openMenu();
 		void chooseClient();
 		void newClient();
 		void deleteClient();
-		int getClientIndex();
-		int getClientAccountIndex(Client *client);
 		void replenishAccount(Client *client);
-		void transferMoney(Client *client);
 		double addMoneyToBank(double money);
 		void addNewAccount(Client *client);
-	    void outputFullClientInfo(Client *client);
 
 		std::string bankName;
 		double bankAccount;
 		double persent;
-		std::vector<Client*> *clientsList;
+		std::vector<Client*> clientsList;
 		int accountLength;
 	};
 }

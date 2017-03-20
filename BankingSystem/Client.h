@@ -8,18 +8,16 @@ namespace BankingComponents {
 
 	class Client
 	{
-		std::vector<Account*> *accounts;
+		std::vector<Account*> accounts;
 	public:
 		Client();
 		virtual ~Client();
 		virtual std::string getName();
-
-
 		bool canTransfer(int accountIndex, double money);
 		int accountCount();
 		void replenishAccount(int accountIndex, double money);
 		void addNewAccount(Account *account);
-		std::vector<Account*>* getAccounts();
+		std::vector<Account*> getAccounts();
 		void addMoney(int accIndex, double money);
 		void takeMoney(int accIndex, double money);
 	};

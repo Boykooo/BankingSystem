@@ -6,10 +6,11 @@ using namespace BankingComponents;
 Account::Account(Bank* bank, string number) {
 	this->bank = bank;
 	this->numberAccount = number;
+	this->money = 0;
 }
 
 Account::~Account() {
-	delete bank;
+	//delete bank;
 }
 
 void Account::addMoney(double money)

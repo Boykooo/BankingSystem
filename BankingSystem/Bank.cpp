@@ -15,12 +15,17 @@ Bank::Bank(string bankName, double account, double persent)
 
 	this->accountLength = 20;
 
-	clientsList = new vector<Client*>();
+	//clientsList = new vector<Client*>();
 }
 
 Bank::~Bank()
 {
-	delete clientsList;
+	vector<Client*>::iterator it = clientsList.begin();
+	while (it != clientsList.end())
+	{
+		delete *it;
+		it = clientsList.erase(it);
+	}
 }
 
 void Bank::showInfo()
@@ -28,18 +33,17 @@ void Bank::showInfo()
 	cout << "\nИмя банка : " << bankName << "\n";
 	cout << fixed << "Счет банка : " << bankAccount << "\n";
 	cout << "Процентная ставка : " << persent << "%\n";
-	cout << "Количество клиентов : " << clientsList->size() << "\n";
+	cout << "Количество клиентов : " << clientsList.size() << "\n";
 
-	if (clientsList->size() > 0)
+	if (clientsList.size() > 0)
 	{
 		cout << "\nСписок клиентов :\n";
-		for (int i = 0; i < clientsList->size(); i++)
+		for (int i = 0; i < clientsList.size(); i++)
 		{
-			cout << i + 1 << ". " << (*clientsList)[i]->getName() << "\n";
+			cout << i + 1 << ". " << clientsList[i]->getName() << "\n";
 		}
 	}
 
-	openMenu();
 }
 
 void Bank::openMenu()
@@ -72,9 +76,9 @@ void Bank::chooseClient()
 	{
 		while (true)
 		{
-			outputFullClientInfo((*clientsList)[clientIndex]);
+			showFullClientInfo(clientIndex);
 
-			cout << "\n1. Пополнить счет  \n2. Перевести сумму денег \n3. Добавить счет \n0.Выход"
+			cout << "\n1. Пополнить счет \n2. Добавить счет \n0.Выход"
 				<< "\nВведите команду : ";
 			int command = UI::getInt();
 			if (command <= 0)
@@ -85,19 +89,15 @@ void Bank::chooseClient()
 			switch (command)
 			{
 			case 1:
-				Bank::replenishAccount((*clientsList)[clientIndex]);
+				Bank::replenishAccount(clientsList[clientIndex]);
 				break;
 			case 2:
-				Bank::transferMoney((*clientsList)[clientIndex]);
-				break;
-			case 3:
-				Bank::addNewAccount((*clientsList)[clientIndex]);
+				Bank::addNewAccount(clientsList[clientIndex]);
 				break;
 			default:
 				break;
 			}
 		}
-
 	}
 }
 
@@ -128,7 +128,7 @@ void Bank::newClient()
 		cout << "Введите дату рождения : ";
 		getline(cin >> ws, birthDate);
 
-		Bank::addUser(new PrivatePerson(name, surname, lastName, birthDate, passport_id));
+		Bank::addClient(new PrivatePerson(name, surname, lastName, birthDate, passport_id));
 	}
 	else {
 		string name;
@@ -141,18 +141,23 @@ void Bank::newClient()
 		cout << "Введите тип организации :\n";
 		getline(cin >> ws, type);
 
-		Bank::addUser(new LegalPerson(name, iin, type));
+		Bank::addClient(new LegalPerson(name, iin, type));
 	}
 }
 
 void Bank::deleteClient()
 {
-	int bankNumber = getClientIndex();
+	int clientIndex = getClientIndex();
 
-	if (bankNumber >= 0)
+	if (clientIndex >= 0)
 	{
-		delete (*clientsList)[bankNumber];
-		clientsList->erase(clientsList->begin() + bankNumber);
+		vector<Client*>::iterator it = clientsList.begin() + clientIndex;
+		delete *it;
+		it = clientsList.erase(it);
+
+		/*delete clientsList[clientIndex];
+		 *
+		clientsList.erase(clientsList.begin() + clientIndex);*/
 	}
 }
 
@@ -161,7 +166,7 @@ int Bank::getClientIndex()
 	cout << "Введите индекс клиента : ";
 	int clientNumber = UI::getInt() - 1;
 
-	if (clientNumber >= 0 && clientsList->size() > clientNumber)
+	if (clientNumber >= 0 && clientsList.size() > clientNumber)
 	{
 		return clientNumber;
 	}
@@ -170,11 +175,27 @@ int Bank::getClientIndex()
 	return -1;
 }
 
-int Bank::getClientAccountIndex(Client *client)
+bool Bank::canTrasfer(int clientIndex, int accNumber, double money)
+{
+	return clientsList[clientIndex]->canTransfer(accNumber, money);
+}
+
+double Bank::takeMoney(int clientIndex, int accNumber, double money)
+{
+	clientsList[clientIndex]->takeMoney(accNumber, money);
+	return money - addMoneyToBank(money);
+}
+
+void Bank::giveMoney(int clientIndex, int accNumber, double money)
+{
+	clientsList[clientIndex]->addMoney(accNumber, money);
+}
+
+int Bank::getClientAccountIndex(int clientIndex)
 {
 	int accIndex = UI::getInt() - 1;
 
-	if (accIndex >= 0 && client->accountCount() > accIndex)
+	if (accIndex >= 0 && clientsList[clientIndex]->accountCount() > accIndex)
 	{
 		return accIndex;
 	}
@@ -199,39 +220,6 @@ void Bank::replenishAccount(Client *client)
 	}
 }
 
-void Bank::transferMoney(Client *client)
-{
-	cout << "Введите индекс счета, откуда будут переведены средства : ";
-	int accOutIndex = getClientAccountIndex(client);
-	if (accOutIndex >= 0)
-	{
-		cout << "Введите индекс клиента, на счет которого будут переведены средства : ";
-		int clientIndex = getClientIndex();
-		if (clientIndex != -1)
-		{
-			Client *inClient = (*clientsList)[clientIndex];
-			cout << "Введите индекс счета, куда будут переведены средства : ";
-			int accInIndex = getClientAccountIndex(inClient);
-			if (accInIndex >= 0)
-			{
-				cout << "Введите сумму перевода : ";
-				double money = UI::getDouble();
-				if (money > 0 && client->canTransfer(accOutIndex, money))
-				{
-					client->takeMoney(accOutIndex, money);
-					double persentMoney = money - addMoneyToBank(money);
-					inClient->addMoney(accInIndex, persentMoney);
-				}
-				else
-				{
-					cout << "У клиента недостаточно средств на счете";
-				}
-			}
-		}
-	}
-
-}
-
 double Bank::addMoneyToBank(double money)
 {
 	double persentMoney = money * persent / 100;
@@ -250,18 +238,19 @@ void Bank::addNewAccount(Client *client)
 	client->addNewAccount(new Account(this, accNumber));
 }
 
-void Bank::outputFullClientInfo(Client* client)
+void Bank::showFullClientInfo(int clientIndex)
 {
+	Client *client = (clientsList)[clientIndex];
 	cout << "\n" << client->getName();
 
 	if (client->accountCount() > 0)
 	{
 		cout << "\nСчета : \n";
-		vector<Account*> *accounts = client->getAccounts();
-		for (int i = 0; i < accounts->size(); i++)
+		vector<Account*> accounts = client->getAccounts();
+		for (int i = 0; i < accounts.size(); i++)
 		{
-			cout << i + 1 << ". Номер счета : " << (*accounts)[i]->getNumberAccount()
-				<< "\n Остаток средств : " << fixed << (*accounts)[i]->getMoney() << "\n";
+			cout << i + 1 << ". Номер счета : " << accounts[i]->getNumberAccount()
+				<< "\n Остаток средств : " << fixed << accounts[i]->getMoney() << "\n";
 		}
 	}
 	else
@@ -272,9 +261,10 @@ void Bank::outputFullClientInfo(Client* client)
 	//delete accounts;
 }
 
-void Bank::addUser(Client *newUser)
+void Bank::addClient(Client *newClient)
 {
-	clientsList->push_back(newUser);
+	Bank::addNewAccount(newClient);
+	clientsList.push_back(newClient);
 }
 
 #pragma region GettersAndSetters
@@ -282,21 +272,6 @@ void Bank::addUser(Client *newUser)
 string Bank::getName()
 {
 	return bankName;
-}
-
-double Bank::getAccount()
-{
-	return bankAccount;
-}
-
-double Bank::getPersent()
-{
-	return persent;
-}
-
-void Bank::setName(string newName)
-{
-	bankName = newName;
 }
 
 #pragma endregion

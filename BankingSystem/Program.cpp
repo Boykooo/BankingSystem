@@ -22,15 +22,12 @@ int main()
 	{
 		cout << menu;
 		cout << "\n¬ведите команду : ";
-		int command = getInt();
-		if (command == 0)
+		if (getInt() == 0)
 		{
 			break;
 		}
-		else
-		{
-			bankingController->showBanksList();
-		}
+
+		bankingController->showBanksList();
 	}
 	
 	delete bankingController;
