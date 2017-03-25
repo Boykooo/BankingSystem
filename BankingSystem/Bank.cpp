@@ -172,9 +172,19 @@ int Bank::getClientIndex()
 	return -1;
 }
 
+ClientType Bank::getClientType(int clientIndex)
+{
+	return clientsList[clientIndex]->getClientType();
+}
+
 bool Bank::canTrasfer(int clientIndex, int accNumber, double money)
 {
 	return clientsList[clientIndex]->canTransfer(accNumber, money);
+}
+
+bool Bank::canTransferToClient(int clientIndex, ClientType clientType)
+{
+	return clientsList[clientIndex]->canTrasferToClient(clientType);
 }
 
 double Bank::takeMoney(int clientIndex, int accNumber, double money)

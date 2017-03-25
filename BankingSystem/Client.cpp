@@ -4,7 +4,7 @@ using namespace BankingComponents;
 
 Client::Client()
 {
-	
+
 }
 
 Client::~Client()
@@ -57,7 +57,12 @@ void Client::takeMoney(int accIndex, double money)
 	accounts[accIndex]->takeMoney(money);
 }
 
-bool Client::canTrasferToClient()
+bool Client::canTrasferToClient(ClientType clientType)
 {
 	return true;
+}
+
+ClientType Client::getClientType()
+{
+	return clientType;
 }

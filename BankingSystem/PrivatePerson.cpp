@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <iostream>
 
 using namespace BankingComponents;
 
@@ -10,10 +11,12 @@ PrivatePerson::PrivatePerson(string name, string surname, string lastName,
 	this->lastName = lastName;
 	this->birthDate = birthDate;
 	this->passport_id = passport_id;
+	this->clientType = ClientType::privateClient;
 }
 
 PrivatePerson::~PrivatePerson()
 {
+
 }
 
 string PrivatePerson::getName()
@@ -25,4 +28,15 @@ string PrivatePerson::getName()
 					+ "\nНомер паспорта : " + passport_id;
 		
 	return fullName;
+}
+
+bool PrivatePerson::canTrasferToClient(ClientType clientType)
+{
+	if (clientType == ClientType::legalClient)
+	{
+		cout << "\nЧастное лицо не может оформить перевод юридическому лицу\n";
+		return false;
+	}
+
+	return true;
 }

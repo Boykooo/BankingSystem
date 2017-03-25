@@ -15,7 +15,9 @@ namespace BankingComponents {
 		void addClient(Client *newClient);
 		int getClientAccountIndex(int clientIndex);
 		int getClientIndex();
+		ClientType getClientType(int clientIndex);
 		bool canTrasfer(int clientIndex, int accNumber, double money);
+		bool canTransferToClient(int clientIndex, ClientType clientType);
 		double takeMoney(int clientIndex, int accNumber, double money);
 		void giveMoney(int clientIndex, int accNumber, double money);
 		void showFullClientInfo(int clientIndex);

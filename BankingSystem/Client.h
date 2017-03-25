@@ -11,11 +11,13 @@ namespace BankingComponents {
 	{
 	private:
 		std::vector<Account*> accounts;
+	protected:
 		ClientType clientType;
 	public:
 		Client();
 		virtual ~Client();
 		virtual std::string getName();
+		virtual bool canTrasferToClient(ClientType clientType);
 		bool canTransfer(int accountIndex, double money);
 		int accountCount();
 		void replenishAccount(int accountIndex, double money);
@@ -23,7 +25,7 @@ namespace BankingComponents {
 		std::vector<Account*> getAccounts();
 		void addMoney(int accIndex, double money);
 		void takeMoney(int accIndex, double money);
-		bool canTrasferToClient();
+		ClientType getClientType();
 	};
 }
 

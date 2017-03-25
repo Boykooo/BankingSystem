@@ -10,6 +10,8 @@ namespace BankingComponents {
 		LegalPerson(string name, string iin, string type);
 		~LegalPerson();
 		string getName();
+		bool canTrasferToClient(ClientType clientType);
+
 	};
 }
 

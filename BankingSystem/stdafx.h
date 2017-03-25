@@ -19,6 +19,7 @@
 #include <string>
 #include "LegalPerson.h"
 #include "PrivatePerson.h"
+#include "ClientType.h"
 
 
 

@@ -143,10 +143,11 @@ void BankingController::bankTrasfer()
 			showAllBanks();
 			cout << "\n\nВведите индекс банка, куда переводить средства : ";
 			BankTransfer in = requestBankTrasfer();
-			if (in.status)
+			if (in.status && out.bank->canTransferToClient(out.clientIndex, in.bank->getClientType(in.clientIndex)))
 			{
 				double persentMoney = out.bank->takeMoney(out.clientIndex, out.accountIndex, money);
 				in.bank->giveMoney(in.clientIndex, in.accountIndex, persentMoney);
+				cout << "\nПеревод прошел успешно\n";
 			}
 		}
 		else

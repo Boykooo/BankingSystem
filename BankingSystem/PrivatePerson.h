@@ -13,6 +13,7 @@ namespace BankingComponents {
 			string birthDate, string passport_id);
 		~PrivatePerson();
 		string getName();
+		bool canTrasferToClient(ClientType clientType);
 	};
 }
 
