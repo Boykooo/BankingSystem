@@ -4,7 +4,7 @@ using namespace BankingComponents;
 
 Client::Client()
 {
-	//accounts = new vector<Account*>();
+	
 }
 
 Client::~Client()
@@ -42,7 +42,7 @@ void Client::addNewAccount(Account* account)
 	accounts.push_back(account);
 }
 
-std::vector<Account*> Client::getAccounts()
+vector<Account*> Client::getAccounts()
 {
 	return accounts;
 }
@@ -55,4 +55,9 @@ void Client::addMoney(int accIndex, double money)
 void Client::takeMoney(int accIndex, double money)
 {
 	accounts[accIndex]->takeMoney(money);
+}
+
+bool Client::canTrasferToClient()
+{
+	return true;
 }

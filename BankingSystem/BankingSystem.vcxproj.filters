@@ -63,6 +63,9 @@
     <ClInclude Include="Account.h">
       <Filter>Заголовочные файлы\BankingComponents</Filter>
     </ClInclude>
+    <ClInclude Include="ClientType.h">
+      <Filter>Заголовочные файлы\BankingComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

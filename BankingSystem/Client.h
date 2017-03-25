@@ -1,5 +1,6 @@
 #pragma once
 #include "vector"
+#include "ClientType.h"
 
 
 namespace BankingComponents {
@@ -8,7 +9,9 @@ namespace BankingComponents {
 
 	class Client
 	{
+	private:
 		std::vector<Account*> accounts;
+		ClientType clientType;
 	public:
 		Client();
 		virtual ~Client();
@@ -20,6 +23,7 @@ namespace BankingComponents {
 		std::vector<Account*> getAccounts();
 		void addMoney(int accIndex, double money);
 		void takeMoney(int accIndex, double money);
+		bool canTrasferToClient();
 	};
 }
 

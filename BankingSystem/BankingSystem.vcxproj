@@ -148,6 +148,7 @@
     <ClInclude Include="Account.h" />
     <ClInclude Include="Bank.h" />
     <ClInclude Include="BankingController.h" />
+    <ClInclude Include="ClientType.h" />
     <ClInclude Include="LegalPerson.h" />
     <ClInclude Include="PrivatePerson.h" />
     <ClInclude Include="stdafx.h" />
